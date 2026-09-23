@@ -5,8 +5,6 @@ import android.content.Intent
 import android.os.IBinder
 
 class PrivilegedService : Service() {
-    private val binder = PrivilegedBinder()
-
     override fun onCreate() {
         super.onCreate()
         val channel = NotificationChannel("privlink", "PrivLink service", NotificationManager.IMPORTANCE_LOW)
@@ -18,6 +16,5 @@ class PrivilegedService : Service() {
             .build()
         startForeground(1001, notification)
     }
-
-    override fun onBind(intent: Intent?): IBinder = binder
+    override fun onBind(intent: Intent?): IBinder? = null
 }
